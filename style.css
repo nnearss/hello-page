@@ -239,7 +239,10 @@ h1 {
   opacity: 0.85;
 }
 
-.btn
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
 /* ---------- контакты ---------- */
 
@@ -297,4 +300,100 @@ button.btn:not(.btn-primary) {
 
 .brief button {
   justify-self: start;
+}
+
+/* ---------- шрифты и меню ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Unbounded', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .nav { gap: 12px; }
+  .nav a { font-size: 0.85rem; }
+}
+
+/* ---------- свечение за заголовком ---------- */
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(400px, 80vw);
+  height: min(400px, 80vw);
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: 0.18;
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---------- появление заголовка ---------- */
+
+.hero > * {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero > *:nth-child(2) { animation-delay: 0.1s; }
+.hero > *:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- появление при прокрутке ---------- */
+
+.reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.7s ease, translate 0.7s ease,
+              transform 0.2s, border-color 0.2s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ---------- для тех, кто отключил анимации ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; translate: 0 0; }
 }

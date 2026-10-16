@@ -51,3 +51,23 @@ brief.addEventListener('submit', (event) => {
   const body = encodeURIComponent(task + '\n\n' + name);
   window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 });
+
+// появление блоков при прокрутке
+const revealEls = document.querySelectorAll(
+  '.section-title, .card, .project, .contact .lead, .contact .project-links, .brief'
+);
+
+if ('IntersectionObserver' in window) {
+  revealEls.forEach((el) => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach((el) => observer.observe(el));
+}
