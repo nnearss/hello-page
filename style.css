@@ -240,3 +240,61 @@ h1 {
 }
 
 .btn
+
+/* ---------- контакты ---------- */
+
+.contact {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 10vh;
+}
+
+.contact .lead {
+  margin: 0 0 8px;
+}
+
+button.btn {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.btn:not(.btn-primary) {
+  background: transparent;
+}
+
+.brief {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--card);
+  border-radius: 16px;
+}
+
+.brief label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.brief input,
+.brief textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.brief input:focus,
+.brief textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.brief button {
+  justify-self: start;
+}

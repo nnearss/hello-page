@@ -25,3 +25,29 @@ toggle.addEventListener('click', () => {
   localStorage.setItem('theme', theme);
   updateIcon();
 });
+
+// копирование почты
+const copyBtn = document.getElementById('copy-email');
+const email = 'nnearss11@gmail.com';
+
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(email);
+    copyBtn.textContent = 'почта скопирована ✓';
+    setTimeout(() => { copyBtn.textContent = email; }, 2000);
+  } catch {
+    window.location.href = 'mailto:' + email;
+  }
+});
+
+// форма-бриф: собирает письмо
+const brief = document.getElementById('brief');
+
+brief.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = brief.elements.name.value.trim();
+  const task = brief.elements.task.value.trim();
+  const subject = encodeURIComponent('Заявка с сайта от ' + name);
+  const body = encodeURIComponent(task + '\n\n' + name);
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+});
