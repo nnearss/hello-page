@@ -99,4 +99,86 @@ h1 {
   padding: 24px;
 }
 
-.footer a { color: var(--muted); }
+.footer a { color: var(--muted); }/* ---------- проекты ---------- */
+
+.projects {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 10vh;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0 0 24px;
+}
+
+.project-list {
+  display: grid;
+  gap: 12px;
+}
+
+.project {
+  display: block;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.project:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.project:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.project h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  word-break: break-word;
+}
+
+.arrow {
+  color: var(--accent);
+  font-size: 1.3rem;
+  transition: transform 0.2s;
+}
+
+.project:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+.project p {
+  margin: 8px 0 16px;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags li {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+}
